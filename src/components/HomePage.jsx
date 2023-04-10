@@ -2,10 +2,16 @@ import React from 'react';
 import imgLike from '../img/like.png';
 import imgMessage from '../img/message.png';
 import fpics from '../img/4pic.png';
+// import avatar from '../img/jaga.jpg';
 
 
 
 export default function HomePage() {
+const avatarfoto = "url('../img/jaga.jpg')";
+const avatarStyle = {
+  backgroundImage: avatarfoto,
+};
+
   return (
     <main className='wrapper'>
       <div className='top'>
@@ -14,7 +20,7 @@ export default function HomePage() {
       
       <article className='card'>
         <div className='wrapavatar'>
-          <div className='avatar'>Фото</div>
+          <div className='avatar' style={avatarStyle}>Foto</div>
           <div>
             <div className='fio'>Иван Сидоров</div>
             <div className='wraptime'>
