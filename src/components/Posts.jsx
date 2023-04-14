@@ -4,25 +4,28 @@ import Post from "./Post";
 export default function Posts() {
   
   const [allPosts, setAllPosta] = useState([]);
+  const [loading, setLoading] = useState('true');
+  const path = 'POSTS';
 
   useEffect(() => {
     const url = 'http://localhost:7070/posts';
-    fetch(url)
-    .then((response) => {
-      console.log('response from FETCH ', response);
-      return response.json()
-    })
-    .then((data) => setAllPosta(data))
-    .catch((error) => {
-      console.log('! ERROR FETCH', error);
-    })
-    .finally()
-  } ,[])
+    
+
+    const fff = async () => {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setAllPosta(data);
+        setLoading(false);
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    fff();
+  } ,[]);
 
   return<>
-    {allPosts.map((i) => <Post item={i} key={i.id}/>)}
-    {/* <Post />
-    <Post />
-    <Post /> */}
+    <h1 style={{color: 'red', fontSize: 88}}>{ (loading) && '...Loading' }</h1>
+    {allPosts.map((i) => <Post path={path} item={i} key={i.id}/>)}
   </>
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Posts from './Posts';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
 
