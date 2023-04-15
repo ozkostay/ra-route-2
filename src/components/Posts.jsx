@@ -6,9 +6,7 @@ export default function Posts() {
   
   const [allPosts, setAllPosts] = useState([]);
   const [loading, setLoading] = useState('true');
-  const path = 'POSTS';
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
     const url = 'http://localhost:7070/posts';
     

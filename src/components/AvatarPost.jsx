@@ -7,29 +7,8 @@ export default function AvatarPost({item, path}) {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
   };
-  let avaPlus = '';
-  console.log('LLLLLLLLLL', path);
-
-  switch(path) {
-    case "POSTS":
-      console.log('POSTS');
-      avaPlus = <div>
-                  <div className='fio'>Иван Сидоров</div>
-                  <div className='wraptime'>
-                    <div className='whois'>Основатель группы</div>
-                    <div className='time'>4 мин.</div>
-                  </div>
-                </div>
-      break;
-  default:
-      avaPlus = ''
-      break;
-  }
-  
-  console.log('++++ path', path);
 
   return <>
     <div className='avatar' style={avatarStyle}></div>
-    {avaPlus}
   </>
 }

@@ -27,7 +27,7 @@ button {
 }
 
 .wrapper {
-  width: 800px;
+  width: 700px;
   background-color: #e8eaed;
   border: 1px solid black;
   margin: 20px auto;
@@ -170,4 +170,20 @@ button {
   height: 100px;
   font-size: 1rem;
   padding: 5px;
+}
+
+.prebottom {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.btnoval{
+  background-color: #f2f3f5;
+  width: 310px;
+  height: 40px;
+  padding: 12px;
+  text-align: left;
+  border-radius: 20px;
+  margin: 0 5px 4px 5px;
 }
