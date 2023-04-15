@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import AvatarPost from "./AvatarPost";
 import { useNavigate } from "react-router-dom";
 
-export default function PostEdit({item}) {
-  // console.log('=============== path', props);
+export default function PostEdit({item, fnEdit}) {
   const [text, setText] = useState(item.content);
   const navigate = useNavigate();
 
   function goOnHomePage() {
-    navigate(`/posts/${item.id}`);
+    const aaa = `/`;
+    navigate(aaa);
   }
 
   function savePost() {
@@ -18,22 +18,28 @@ export default function PostEdit({item}) {
       'content': text
     };
     const URL = 'http://localhost:7070/posts';
-  
-    fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(postObj)
-    })
-    .then((response) => {
-      console.log('response from FETCH ', response);
-    })
-    .catch((error) => {
-      console.log('!!! ERROR FETCH', error);
-    })
-    .finally()
-    goOnHomePage()
+    
+    const fnFetch = async () => {
+      try {
+        const response = await fetch(URL, {
+                                  method: 'POST',
+                                  headers: {
+                                    'Content-Type': 'application/json'
+                                  },
+                                  body: JSON.stringify(postObj)
+                                })
+        const status = response.ok;
+        if (status) {
+          fnEdit();
+        } else {
+          console.log(' Ответ на 2хх!!! ');
+        }
+      } catch(error) {
+        console.error('!!! ERROR FETCH', error);
+      }
+      
+    }
+    fnFetch();
   }
 
   return (
@@ -47,9 +53,9 @@ export default function PostEdit({item}) {
         
         <div className='wrapnewpost'>
           <AvatarPost />
-          <textarea className='bb' value={text} onChange={(e) => setText(e.target.value)} />
+          <textarea className='' value={text} onChange={(e) => setText(e.target.value)} />
         </div>
-        <div className='bb prebottom'>
+        <div className='prebottom'>
           <div>
             <div className='btnoval'>Фото/видео</div>
             <div className='btnoval'>Чувства/действия</div>

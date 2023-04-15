@@ -3,20 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import AvatarPost from './AvatarPost';
 
 export default function NewPost({mode}) {
-  
 
   const [text, setText] = useState('');
-  // const [resFetch] = useFetcher('http://localhost:7070/posts');
   const navigate = useNavigate();
-
-  console.log('mode', mode);
-
-  // const avatarfoto = 'https://proprikol.ru/wp-content/uploads/2021/12/kartinki-ezhika-na-avu-41.jpg';
-  // const avatarStyle = {
-  //   backgroundImage: `url(${avatarfoto})`,
-  //   backgroundPosition: 'center',
-  //   backgroundSize: 'cover',
-  // };
 
   function addPost() {
     let postObj = {

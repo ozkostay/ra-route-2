@@ -13,9 +13,8 @@ export default function PostView() {
   const [loading, setLoading] = useState(true);
   const [mode, setMode] = useState();
   const { postId } = useParams();
+  const navigate = useNavigate();
   
-  // console.log('=====MMMMMMMMMMMM',item);
-
   const URL = 'http://localhost:7070/posts';
   
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function PostView() {
       try { 
         const response = await fetch(`${URL}/${postId}`);
         const data = await response.json();
-        // console.log('=== data', data);
         setLoading(false);
         setPost(data.post);
       } catch(error) {
@@ -31,12 +29,37 @@ export default function PostView() {
       }
     }
     fnFetch();
-  },[])
+  })
+
+  function fnDelete() {
+    const fnFetch = async () => {
+      try {
+        const response = await fetch(`${URL}/${postId}`, { method: 'DELETE' })
+        const status = response.ok;
+        console.log('status', status);
+        if (status) {
+          console.log('DELETE response from FETCH ', response);
+          console.log('--------------------');
+          navigate('/');
+        } else {
+          console.log(' Ответ не 2хх!!! ');
+        }
+      } catch(error) {
+        console.log('!!! ERROR FETCH', error);
+      }
+      
+    }
+    fnFetch();
+    }
 
   function fnEdit() {
-    setMode('edit');
+    if (!mode) {
+      setMode('edit');
+    } else {
+      setMode(false);
+    }
+    
   }
-  // console.log('loading', loading)
   return (
     <>
     <h1 style={{color: 'red', fontSize: 88}}>{ (loading) && '...Loading' }</h1>
@@ -48,18 +71,14 @@ export default function PostView() {
          </div>
         <PostContent item={post}/>
         <LikeIt />
-        <BottomView fnEdit={fnEdit}/>
+        <BottomView fnEdit={fnEdit} fnDelete={fnDelete}/>
       </article>
     }
     {(!loading) && (mode) &&
       <article className='card'>
-        <PostEdit item={post}/>
+        <PostEdit item={post} fnEdit={fnEdit}/>
       </article>
     }
     </>
   )
-      
-          // <Post mode='edit' item={post} />}
- 
-  
 }

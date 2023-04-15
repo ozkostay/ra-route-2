@@ -15,8 +15,6 @@ import PostView from './components/PostView'
             <Route path='/' element={<HomePage />} />
             <Route path='/posts/new' element={<NewPost />} />
             <Route path='/posts/:postId' element={<PostView />} />
-            {/* <Route path="/forza" element={<ForzaPage />} />
-            <Route path="/drift" element={<DriftPage />} /> */}
         </Routes>
         
       </div>  

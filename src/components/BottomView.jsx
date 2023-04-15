@@ -1,14 +1,11 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
-import fpics from '../img/4pic.png';
-import AvatarPost from "./AvatarPost";
 
-export default function BottomView({fnEdit}) {
+export default function BottomView({fnEdit, fnDelete}) {
 
   return (
     <div>
       <button onClick={fnEdit}>Изменить</button>
-      <button style={{backgroundColor: '#b04546'}}>Удалить</button>
+      <button onClick={fnDelete} style={{backgroundColor: '#b04546'}}>Удалить</button>
     </div>
   ) 
 }
