@@ -34,6 +34,10 @@ export default function NewPost() {
       console.log('!!! ERROR FETCH', error);
     })
     .finally()
+    goOnHomePage()
+  }
+
+  function goOnHomePage() {
     navigate("/");
   }
 
@@ -59,7 +63,7 @@ export default function NewPost() {
           </div>
         </div>
         
-        <div className='krestik'>
+        <div className='krestik' onClick={goOnHomePage}>
           <img src={require('../img/krestik22.png')} alt="foo" />
         </div>
       </header>

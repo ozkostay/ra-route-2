@@ -23,6 +23,7 @@ button {
   border: none;
   border-radius: 4px;
   padding: 7px;
+  margin-left: 10px;
 }
 
 .wrapper {
